@@ -13,20 +13,20 @@ const includeNumbers = confirm("Включать цифры?");
 const includeSymbols = confirm("Включать спецсимволы?");
 
 // 4 Пустой массив для разрешённых символов
-const allowedSymbols = [];
+let allowedSymbols = [];
 
 // 5 Буквы добавляем всегда
-allowedSymbols.push(...lowercase);
-allowedSymbols.push(...uppercase);
+allowedSymbols = allowedSymbols.concat(lowercase);
+allowedSymbols = allowedSymbols.concat(uppercase);
 
-// 6 Если «Да» добавить цифры
+// 6 Если Да добавить цифры
 if (includeNumbers) {
-  allowedSymbols.push(...numbers);
+  allowedSymbols = allowedSymbols.concat(numbers);
 }
 
-// 7 Если Да, добавить спецсимволы
+// 7 Если Да добавить спецсимволы
 if (includeSymbols) {
-  allowedSymbols.push(...symbols);
+  allowedSymbols = allowedSymbols.concat(symbols);
 }
 
 // 8 Пустой пароль
@@ -34,7 +34,8 @@ let password = "";
 
 // 9 Цикл на длину пароля
 for (let i = 0; i < length; i++) {
-// 10 Случайный символ прибавить к паролю
+
+  // 10 Случайный символ прибавить к паролю
   const randomIndex = Math.floor(Math.random() * allowedSymbols.length);
   password = password + allowedSymbols[randomIndex];
 }
